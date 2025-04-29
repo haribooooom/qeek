@@ -1,4 +1,5 @@
 'use server'                       // ❶ サーバーファイル宣言
+export const dynamic = 'force-dynamic'; // 追加：サーバー実行を強制
 // export const runtime = 'nodejs'     // ❷ Edge ではなく Node.js で実行
 
 import { NextRequest, NextResponse } from 'next/server'
@@ -15,8 +16,11 @@ export async function POST(req: NextRequest) {
     }
 
     // ----------- ここでだけ動的 import -----------
-    const { OpenAI } = await import('openai')
-    const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY! })
+    const { OpenAI } = await import('openai');
+    if (!process.env.OPENAI_API_KEY) {
+      throw new Error('OPENAI_API_KEY が設定されていません');
+    }
+    const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
     const completion = await openai.chat.completions.create({
       model: 'gpt-4o',
