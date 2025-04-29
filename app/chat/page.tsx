@@ -40,7 +40,7 @@ export default function ChatPage() {
   const [messages, setMessages] = useState<Array<{ sender: string; text: string; id: string }>>([])
   const [inputMessage, setInputMessage] = useState("")
   const [showDiagnosis, setShowDiagnosis] = useState(false)
-  const [isProcessing, setIsProcessing] = useState(isProcessing)
+  const [isProcessing, setIsProcessing] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const [resources, setResources] = useState<any[]>([])
   const [error, setError] = useState<string | null>(null)

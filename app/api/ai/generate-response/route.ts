@@ -1,6 +1,7 @@
-'use server'                       // ❶ サーバーファイル宣言
-export const dynamic = 'force-dynamic'; // 追加：サーバー実行を強制
-// export const runtime = 'nodejs'     // ❷ Edge ではなく Node.js で実行
+
+'use server'
+export const runtime = 'nodejs'; // Node.js で強制実行
+export const dynamic = 'force-dynamic'; // サーバー実行を強制
 
 import { NextRequest, NextResponse } from 'next/server'
 
