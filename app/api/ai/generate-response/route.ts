@@ -1,5 +1,5 @@
 'use server'                       // ❶ サーバーファイル宣言
-export const runtime = 'nodejs'     // ❷ Edge ではなく Node.js で実行
+// export const runtime = 'nodejs'     // ❷ Edge ではなく Node.js で実行
 
 import { NextRequest, NextResponse } from 'next/server'
 
